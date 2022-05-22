@@ -255,5 +255,77 @@ select min(priceEach * quantityOrdered) as minAmount, max(priceEach * quantityOr
 from orderdetails;
 </br>
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+</br>
 
+
+<h3> Timed Test - V </h3>
+</br>
+
+1 ) Total and Average Order Amounts
+Write a query to retrieve the total amount received from all orders, as well as the average amount.
+
+![image](https://user-images.githubusercontent.com/72138103/169703404-57c34c45-45aa-4c64-8d65-bf550ea89dfc.png)
+
+</br>
+
+sol 1 ) use upgrad;
+
+select sum(priceEach * quantityOrdered) as totalAmount, avg(priceEach * quantityOrdered) as avgAmount
+from orderdetails;
+</br>
+
+2 ) Rounded Total and Average Order Amounts
+Write a query to retrieve the total amount received from all orders, as well as the average amount and round the answers to the nearest integer.
+
+![image](https://user-images.githubusercontent.com/72138103/169703441-4d22fb58-e674-44c9-a638-78a124757b02.png)
+
+</br>
+sol 2 )use upgrad;
+
+select round(sum(priceEach * quantityOrdered)) as roundedTotalAmount,
+round(avg(priceEach * quantityOrdered)) as roundedAvgAmount
+from orderdetails;
+
+</br>
+3 ) Employee Strength vs. Office Code
+Write a query to retrieve the list of number of employees corresponding to each office code. Arrange the number of employees in the increasing order of the office codes.
+![image](https://user-images.githubusercontent.com/72138103/169703492-cc38a0ad-74fb-4b29-9b41-3c3549e317b9.png)
+</br>
+sol 3 ) use upgrad;
+
+select officeCode, count(*) as no_Of_Employees
+from employees
+group by officeCode
+order by officeCode;
+
+</br>
+
+4 ) Rounded Total Order Amounts
+Write a query to retrieve the rounded total order amounts for each order line number. Arrange these amounts in the decreasing order.
+
+![image](https://user-images.githubusercontent.com/72138103/169703542-82f734a6-e651-47dc-8ac0-813f40dc9ba1.png)
+</br>
+
+sol 4 ) use upgrad;
+
+select round(sum(priceEach * quantityOrdered)) as roundedAmount, orderLineNumber
+from orderdetails
+group by orderLineNumber
+order by roundedAmount desc;
+
+</br>
+
+5 ) Orders of Less Than One Lakh
+Write a query to retrieve order line numbers having rounded line-wise order amounts of less than 1,00,000. Arrange them in the decreasing order of their amounts.
+![image](https://user-images.githubusercontent.com/72138103/169703591-4a34af7a-37ee-4139-aeab-44be03e9ffcf.png)
+</br>
+sol 5 ) 
+use upgrad;
+
+select round(sum(priceEach * quantityOrdered)) as roundedAmount, orderLineNumber
+from orderdetails
+group by orderLineNumber
+having roundedAmount < 100000
+order by roundedAmount desc;
+</br>
 
