@@ -5,7 +5,7 @@
 
 <h3> Practice Questions </h3> </br>
 
-<h4> Timed Test-1 </h4>
+<h3> Timed Test-1 </h3>
 
 1 ) Write a query to return the employee number, first name and last name of all the employees. Order the employees in the alphabetical order of their first names. </br>
 ![image](https://user-images.githubusercontent.com/82382478/169697144-ac939879-a8f8-49e4-93a6-cc1d3ea57100.png)
@@ -67,3 +67,23 @@ from employees
 where officeCode = 6 and reportsTo = 1088
 order by employeeNumber;
 
+</br>
+--------------------------------------------------------------------------------------------------------------------------------------------
+<h3> Timed Test-2 </h3>
+
+1 ) More Filtered Employees
+Write a query to retrieve the email addresses of all the employees who have an office code of 6 or report to employees with employee number '1088'. Arrange them in the reverse alphabetical order of their first names.
+</br>
+
+sol 1) 
+use upgrad;
+
+select email
+from employees
+where officeCode = 6 or reportsTo = 1088
+order by firstName desc;
+
+</br>
+
+2 ) Employees from Specific Office Codes
+Write a query to retrieve all the details of all the employees who have an office code from 2 to 4. Arrange them in the alphabetical order of their first names. Please click on the sample output to view it clearly.
