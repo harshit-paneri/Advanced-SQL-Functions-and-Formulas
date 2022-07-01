@@ -122,10 +122,7 @@ Write a query to retrieve the extensions and office codes of all the employees h
 4 ) 
 use upgrad;
 
-select extension, officeCode
-from employees
-where officeCode % 2 = 0
-order by firstName;
+select extension, officeCode from employees where MOD(officeCode , 2) = 0 order by firstName;
 
 </br>
 
@@ -211,10 +208,8 @@ Note that all employee numbers consist of 4 digits.
 </br>
 sol 1 )
 use upgrad;
-
-select employeeNumber, firstName, lastName
-from employees
-where employeeNumber like '1__2'
+select employeeNumber,firstName, lastName from employees
+where employeeNumber like '1%2'
 order by firstName;
 
 2 ) Product Codes with Patterns
@@ -225,11 +220,7 @@ Write a query to retrieve the product codes and prices of all products having th
 
 sol 2 )
 use upgrad;
-
-select productCode, priceEach
-from orderdetails
-where productcode like '%\_32%'
-order by priceEach desc;
+select productCode, priceEach from orderdetails where productcode like '____32__' order by priceEach desc;
 </br>
 
 3 ) First Names of Employees
@@ -281,9 +272,7 @@ Write a query to retrieve the total amount received from all orders, as well as 
 
 </br>
 sol 2 )use upgrad;
-
-select round(sum(priceEach * quantityOrdered)) as roundedTotalAmount,
-round(avg(priceEach * quantityOrdered)) as roundedAvgAmount
+select round(sum(quantityordered * priceeach)) as totalAmount, round(avg(quantityordered * priceeach)) as avgAmount
 from orderdetails;
 
 </br>
